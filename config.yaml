@@ -1,0 +1,37 @@
+# config.yaml — single source of truth for parameters. Organiser-published values OVERRIDE the candidates below.
+random_state: 42
+
+data:
+  raw_file: "data/raw/train.csv"      # update to the real file name handed out
+  processed_file: "data/processed/clean.parquet"
+
+split:
+  test_size: 0.20                     # held out, evaluated once per final model
+  val_size_within_train: 0.20         # for tuning, threshold and ETA band selection
+
+sla:
+  late_threshold_min: 30              # CANDIDATE. Replace with organiser SLA if published; log decision in context.md
+  alt_thresholds_min: [25, 35]        # Additional analysis only, never replaces the official SLA
+  official_value_confirmed: false
+
+cost:                                 # ASSUMPTIONS (relative units). Organiser values override.
+  missed_late_cost: 5                 # refund / cancellation / lost customer
+  intervention_cost: 1                # priority rider, proactive message
+  sensitivity_ratios: [2, 5, 10]      # missed:intervention ratios to show
+  organiser_values_confirmed: false
+
+eta_interval:
+  coverage: 0.80                      # share of orders expected inside the ETA band (checked on test)
+
+peak_hours:                           # fixed business hours (candidate); verify on TRAIN EDA
+  lunch: [12, 14]
+  dinner: [19, 22]
+
+clustering:
+  k_range: [2, 12]
+  seeds_for_stability: [0, 1, 2, 3, 4]
+  min_orders_per_rider: 10            # justify after viewing the distribution
+
+surge_rule:
+  min_window_orders: 100              # minimum volume for a surge window (tune on TRAIN counts)
+  min_excess_late_pp: 5               # late-rate excess vs network, percentage points

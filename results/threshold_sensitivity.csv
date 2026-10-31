@@ -1,0 +1,4 @@
+cost_ratio_missed_to_intervention,optimal_threshold,expected_cost
+2,0.51,674.0
+5,0.28,908.0
+10,0.16,1085.0

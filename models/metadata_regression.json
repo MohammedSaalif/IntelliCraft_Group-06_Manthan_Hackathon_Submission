@@ -1,0 +1,46 @@
+{
+  "best_model": "gradient_boosting",
+  "metrics": {
+    "train_mae": 3.0105,
+    "train_rmse": 3.7612,
+    "train_r2": 0.84,
+    "val_mae": 3.1456,
+    "val_rmse": 3.9291,
+    "val_r2": 0.8263,
+    "test_mae": 3.1214,
+    "test_rmse": 3.9261,
+    "test_r2": 0.821
+  },
+  "eta_band": {
+    "lower_residual_q": -4.69,
+    "upper_residual_q": 5.13,
+    "coverage_target": 0.8,
+    "coverage_actual": 0.8
+  },
+  "features": [
+    "Delivery_person_Age",
+    "Delivery_person_Ratings",
+    "Restaurant_latitude",
+    "Restaurant_longitude",
+    "Delivery_location_latitude",
+    "Delivery_location_longitude",
+    "Vehicle_condition",
+    "multiple_deliveries",
+    "distance_km",
+    "order_hour",
+    "order_minute",
+    "day_of_week",
+    "is_weekend",
+    "month",
+    "is_lunch_peak",
+    "is_dinner_peak",
+    "is_peak",
+    "Weatherconditions",
+    "Road_traffic_density",
+    "Type_of_order",
+    "Type_of_vehicle",
+    "Festival",
+    "City"
+  ],
+  "random_state": 42
+}

@@ -1,0 +1,36 @@
+action,detail,rows_affected
+load,"Loaded 45593 rows, 20 columns from train.csv",
+strip_whitespace,Stripped whitespace from 15 object columns,
+clean_target,Extracted numeric value from Time_taken(min),
+clean_weather,Removed 'conditions ' prefix from Weatherconditions,
+nan_strings,Converted 1854 'NaN' strings to NaN in Delivery_person_Age,1854.0
+nan_strings,Converted 1908 'NaN' strings to NaN in Delivery_person_Ratings,1908.0
+nan_strings,Converted 1731 'NaN' strings to NaN in Time_Orderd,1731.0
+nan_strings,Converted 616 'NaN' strings to NaN in Weatherconditions,616.0
+nan_strings,Converted 601 'NaN' strings to NaN in Road_traffic_density,601.0
+nan_strings,Converted 993 'NaN' strings to NaN in multiple_deliveries,993.0
+nan_strings,Converted 228 'NaN' strings to NaN in Festival,228.0
+nan_strings,Converted 1200 'NaN' strings to NaN in City,1200.0
+type_cast,"Cast Age, Ratings, multiple_deliveries, Vehicle_condition to numeric",
+parse_date,Parsed Order_Date to datetime (DD-MM-YYYY),
+parse_time,Extracted order_hour and order_minute from Time_Orderd,
+distance,Computed haversine distance_km from store to customer,
+date_features,"Added day_of_week, is_weekend, month",
+peak_flags,"Added is_lunch_peak, is_dinner_peak, is_peak (lunch=[12, 14], dinner=[19, 22])",
+drop_zero_coords,Dropped 3640 rows with zero lat/lon,3640.0
+drop_extreme_distance,Dropped 431 rows with distance > 100 km,431.0
+drop_age_outlier,Dropped 25 rows with age < 16 or > 65,25.0
+fill_median,Filled 1476 NaN in Delivery_person_Age with median=30.00,1476.0
+fill_median,Filled 1515 NaN in Delivery_person_Ratings with median=4.70,1515.0
+fill_median,Filled 897 NaN in multiple_deliveries with median=1.00,897.0
+fill_median,Filled 1300 NaN in order_hour with median=19.00,1300.0
+fill_median,Filled 1300 NaN in order_minute with median=30.00,1300.0
+fill_mode,Filled 1300 NaN in Time_Orderd with mode='21:55:00',1300.0
+fill_mode,Filled 395 NaN in Weatherconditions with mode='Fog',395.0
+fill_mode,Filled 383 NaN in Road_traffic_density with mode='Low',383.0
+fill_mode,Filled 215 NaN in Festival with mode='No',215.0
+fill_mode,Filled 1097 NaN in City with mode='Metropolitian',1097.0
+drop_leakage,Dropped leakage columns: ['Time_Order_picked'],
+drop_raw_temporal,"Dropped raw temporal columns: ['Time_Orderd', 'Order_Date']",
+late_flag,Created is_late flag (SLA = 30 min). Late rate = 29.98%,
+summary,"Final: 41497 rows (4096 removed, 9.0%)",
