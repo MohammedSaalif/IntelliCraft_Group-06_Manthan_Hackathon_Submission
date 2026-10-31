@@ -1,20 +1,18 @@
-# Q-INTEL --- Quick-Commerce Intelligent Delivery & Operations Engine
+Quick-Commerce — Delivery Intelligence & Operations Engine
+Live Application: Open the Quick-Commerce Streamlit Dashboard
 
+Explore the deployed demonstration of delivery ETA estimation, late-delivery risk analysis, geographic demand visualization and operational insights.
 An end-to-end machine-learning prototype for delivery ETA estimation,
 late-order risk analysis, geographic demand-zone discovery, and
 retrospective operational intelligence.
+Project status: Hackathon / decision-support prototype. It
+analyses historical records and does not autonomously dispatch riders,
+calculate live road routes, or prove that opening a dark store will be
+profitable.
 
-> **Project status:** Hackathon / decision-support prototype. It
-> analyses historical records and does not autonomously dispatch riders,
-> calculate live road routes, or prove that opening a dark store will be
-> profitable.
-
-## 1. Project structure
-
-Run commands from the `Q-INTEL` project root. The expected structure is:
-
-``` text
-Q-INTEL/
+1. Project structure
+Run commands from the QUICK-COMMERCE project root. The expected structure is:
+QUICK-COMMERCE/
 ├── data/
 │   ├── raw/
 │   │   └── train.csv
@@ -41,47 +39,35 @@ Q-INTEL/
 │   └── operational_decision_engine.py
 ├── requirements.txt
 └── README.md
-```
-
 Some generated folders and files appear only after the corresponding
 notebook cells or scripts have run. Keep the actual filenames in your
 working repository if they differ from this reference structure.
-
-## 2. Requirements
-
--   Windows 10/11 (the commands below use PowerShell).
--   Python 3.10 or newer recommended.
--   Jupyter Notebook or JupyterLab.
--   The supplied `train.csv` dataset.
--   Internet access for the initial Python package installation.
-
-### Python packages
-
+2. Requirements
+- Windows 10/11 (the commands below use PowerShell).
+- Python 3.10 or newer recommended.
+- Jupyter Notebook or JupyterLab.
+- The supplied train.csv dataset.
+- Internet access for the initial Python package installation.
+Python packages
 The notebook imports and uses:
+- pandas, numpy --- data loading, cleaning and numerical
+  processing.
+- matplotlib, seaborn --- exploratory analysis and charts.
+- scikit-learn --- preprocessing, regression, classification,
+  clustering and evaluation.
+- joblib --- saving and loading trained model bundles.
+- plotly --- interactive charts where used.
+- folium, streamlit-folium --- geographic maps in the dashboard.
+- streamlit --- interactive application.
+Jupyter tooling: - jupyterlab - ipykernel
 
--   `pandas`, `numpy` --- data loading, cleaning and numerical
-    processing.
--   `matplotlib`, `seaborn` --- exploratory analysis and charts.
--   `scikit-learn` --- preprocessing, regression, classification,
-    clustering and evaluation.
--   `joblib` --- saving and loading trained model bundles.
--   `plotly` --- interactive charts where used.
--   `folium`, `streamlit-folium` --- geographic maps in the dashboard.
--   `streamlit` --- interactive application.
-
-Jupyter tooling: - `jupyterlab` - `ipykernel`
-
-The project `requirements.txt` should be the installation source of
+The project requirements.txt should be the installation source of
 truth. If it is missing or incomplete, a baseline installation command
 is provided below. Do not install packages into a different Python
 environment from the one selected as the notebook kernel.
-
-## 3. Setup --- Windows PowerShell
-
-Open VS Code at the `Q-INTEL` folder. Open **Terminal → New Terminal**
+3. Setup --- Windows PowerShell
+Open VS Code at the QUICK-COMMERCE folder. Open Terminal → New Terminal
 and confirm that the terminal path is the project root.
-
-``` powershell
 # Create a virtual environment (skip if .venv already exists)
 py -m venv .venv
 
@@ -98,220 +84,168 @@ pip install -r requirements.txt
 python -m pip install jupyterlab ipykernel
 
 # Register this environment as a selectable Jupyter kernel
-python -m ipykernel install --user --name q-intel --display-name "Python (Q-INTEL)"
-```
-
+python -m ipykernel install --user --name quick-commerce --display-name "Python (QUICK-COMMERCE)"
 If PowerShell blocks environment activation, run this only in the
 current terminal session:
-
-``` powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 .\.venv\Scripts\Activate.ps1
-```
-
-### Baseline dependency installation (only if needed)
-
-If `requirements.txt` is unavailable, install the notebook's listed
+Baseline dependency installation (only if needed)
+If requirements.txt is unavailable, install the notebook's listed
 libraries:
-
-``` powershell
 python -m pip install pandas numpy matplotlib seaborn scikit-learn joblib plotly folium streamlit streamlit-folium jupyterlab ipykernel
-```
-
 For reproducibility, record the versions actually used after successful
 setup:
-
-``` powershell
 python --version
 python -m pip freeze > requirements-lock.txt
-```
-
-## 4. Dataset placement
-
+4. Dataset placement
 Place the supplied dataset at:
-
-``` text
-Q-INTEL/data/raw/train.csv
-```
-
+QUICK-COMMERCE/data/raw/train.csv
 The notebook also checks these fallback locations if its code defines
 them:
-
-``` text
-Q-INTEL/data/train.csv
-Q-INTEL/train.csv
-```
-
+QUICK-COMMERCE/data/train.csv
+QUICK-COMMERCE/train.csv
 The source file is expected to contain delivery records, including the
-delivery-time target `Time_taken(min)`, order date/time fields, store
+delivery-time target Time_taken(min), order date/time fields, store
 and customer coordinates, traffic/weather context and order attributes.
 
 Do not rename source columns unless you also update the notebook and
 scripts that reference them.
-
-## 5. Run the final notebook
-
-1.  Open the `Q-INTEL` folder in VS Code.
-2.  Open `notebooks/Q_INTEL_End_to_End_Notebook.ipynb`.
-3.  Select the **Python (Q-INTEL)** kernel.
-4.  Confirm the notebook's project-root cell detects the folders `src`,
-    `data`, `models`, and `reports`.
-5.  Run **Kernel → Restart Kernel and Run All**.
-6.  Read each stage's output and confirm that model files and report
-    artifacts are written successfully.
-7.  Review the final metrics, model comparisons, cluster summaries and
-    operational outputs before using them in the submission documents.
-
+5. Run the final notebook
+1. Open the QUICK-COMMERCE folder in VS Code.
+2. Open notebooks/Q_INTEL_End_to_End_Notebook.ipynb.
+3. Select the Python (QUICK-COMMERCE) kernel.
+4. Confirm the notebook's project-root cell detects the folders src,
+   data, models, and reports.
+5. Run Kernel → Restart Kernel and Run All.
+6. Read each stage's output and confirm that model files and report
+   artifacts are written successfully.
+7. Review the final metrics, model comparisons, cluster summaries and
+   operational outputs before using them in the submission documents.
 If the notebook is opened from a different working directory and reports
 missing project folders, set the notebook working directory to the
-`Q-INTEL` root or update `PROJECT_ROOT` to the actual full path. Do not
+QUICK-COMMERCE root or update PROJECT_ROOT to the actual full path. Do not
 create duplicate empty folders to silence this error.
-
-### Pipeline stages
-
+Pipeline stages
 The notebook/source workflow is organised around:
-
-1.  Dataset loading and initial inspection.
-2.  Data validation, missing-value and duplicate checks.
-3.  Cleaning and feature engineering.
-4.  Chronological train/validation/test split.
-5.  ETA regression model training and evaluation.
-6.  Late-order classification and threshold evaluation.
-7.  Model explainability / permutation importance.
-8.  Geographic demand-zone clustering and map outputs.
-9.  Operational risk scoring and summary reports.
-
+1. Dataset loading and initial inspection.
+2. Data validation, missing-value and duplicate checks.
+3. Cleaning and feature engineering.
+4. Chronological train/validation/test split.
+5. ETA regression model training and evaluation.
+6. Late-order classification and threshold evaluation.
+7. Model explainability / permutation importance.
+8. Geographic demand-zone clustering and map outputs.
+9. Operational risk scoring and summary reports.
 Run the complete pipeline in order. Later stages depend on outputs
 created earlier.
-
-## 6. Run the Streamlit demo
-
-If the repository contains `app/streamlit_app.py` and the notebook has
+6. Run the Streamlit demo
+If the repository contains app/streamlit_app.py and the notebook has
 generated all model/report files required by that app, run this command
 from the project root:
-
-``` powershell
 streamlit run app/streamlit_app.py
-```
-
 Open the local URL printed by Streamlit (commonly
-`http://localhost:8501`).
+http://localhost:8501).
 
 If your final working app has a different filename or folder, use that
 actual path instead. Do not assume the dashboard is ready until it
 starts successfully and a sample prediction has been tested.
-
-### Demo checks
-
--   Confirm the app loads the model bundle generated by the final
-    notebook.
--   Enter a valid sample order using values consistent with the training
-    data.
--   Check that the ETA is shown in minutes.
--   Check that late-risk probability and the threshold/risk label are
-    displayed clearly.
--   Confirm the map uses valid coordinates and that zone markers are not
-    presented as road routes or service-area boundaries.
--   Test missing, out-of-range and unfamiliar category inputs.
--   Record the model version, SLA setting and test date for the demo.
-
-## 7. Key assumptions and interpretation limits
-
-1.  **Dataset proxy:** The supplied records describe food delivery, not
-    a complete grocery quick-commerce operation. Restaurant coordinates
-    are treated as service-location/store proxies.
-2.  **SLA:** The notebook's 35-minute threshold is a provisional
-    demonstration threshold unless the organiser has confirmed it. It is
-    not an official SLA. Change the setting consistently in the
-    notebook, model labels, dashboard and report if the approved SLA
-    differs, then rerun the pipeline.
-3.  **Prediction timing:** A feature may be used only if it is available
-    at the moment the prediction is claimed to occur. Pickup time and
-    delivery outcome are post-event information and must not be used for
-    order-placement prediction. Verify when traffic/weather values
-    become available.
-4.  **GPS:** Invalid coordinates should be flagged and excluded from
-    geographic calculations. This does not mean deleting the entire
-    order from non-geographic analysis.
-5.  **Distance:** Haversine distance is straight-line distance, not
-    actual road distance or travel time.
-6.  **Clustering:** Geographic clusters are exploratory demand
-    groupings. A cluster centre is not a validated delivery boundary,
-    route, or optimal dark-store location.
-7.  **Courier segmentation:** Rider groups are retrospective descriptive
-    segments. They should not be used for punitive decisions or
-    interpreted without considering route, shift and demand context.
-8.  **Model scores:** ETA predictions and late-risk probabilities are
-    estimates, not guarantees. Validate calibration before interpreting
-    probabilities as reliable real-world risk percentages.
-9.  **Causality:** Feature importance and historical correlations do not
-    prove that a factor causes delays.
-10. **Business impact:** Cost savings, improved customer satisfaction
+Demo checks
+- Confirm the app loads the model bundle generated by the final
+  notebook.
+- Enter a valid sample order using values consistent with the training
+  data.
+- Check that the ETA is shown in minutes.
+- Check that late-risk probability and the threshold/risk label are
+  displayed clearly.
+- Confirm the map uses valid coordinates and that zone markers are not
+  presented as road routes or service-area boundaries.
+- Test missing, out-of-range and unfamiliar category inputs.
+- Record the model version, SLA setting and test date for the demo.
+7. Key assumptions and interpretation limits
+1. Dataset proxy: The supplied records describe food delivery, not
+   a complete grocery quick-commerce operation. Restaurant coordinates
+   are treated as service-location/store proxies.
+2. SLA: The notebook's 35-minute threshold is a provisional
+   demonstration threshold unless the organiser has confirmed it. It is
+   not an official SLA. Change the setting consistently in the
+   notebook, model labels, dashboard and report if the approved SLA
+   differs, then rerun the pipeline.
+3. Prediction timing: A feature may be used only if it is available
+   at the moment the prediction is claimed to occur. Pickup time and
+   delivery outcome are post-event information and must not be used for
+   order-placement prediction. Verify when traffic/weather values
+   become available.
+4. GPS: Invalid coordinates should be flagged and excluded from
+   geographic calculations. This does not mean deleting the entire
+   order from non-geographic analysis.
+5. Distance: Haversine distance is straight-line distance, not
+   actual road distance or travel time.
+6. Clustering: Geographic clusters are exploratory demand
+   groupings. A cluster centre is not a validated delivery boundary,
+   route, or optimal dark-store location.
+7. Courier segmentation: Rider groups are retrospective descriptive
+   segments. They should not be used for punitive decisions or
+   interpreted without considering route, shift and demand context.
+8. Model scores: ETA predictions and late-risk probabilities are
+   estimates, not guarantees. Validate calibration before interpreting
+   probabilities as reliable real-world risk percentages.
+9. Causality: Feature importance and historical correlations do not
+   prove that a factor causes delays.
+10. Business impact: Cost savings, improved customer satisfaction
     and operational gains must be measured in a controlled pilot. They
     are not established by offline model metrics alone.
-11. **Live operations:** The prototype does not have complete real-time
+11. Live operations: The prototype does not have complete real-time
     courier availability, store workload, inventory, dispatch or
     road-routing integrations. It is not a production dispatch
     optimizer.
-
-## 8. Troubleshooting
-
-  ------------------------------------------------------------------------
+8. Troubleshooting
   Issue                                What to check
-  ------------------------------------ -----------------------------------
-  `FileNotFoundError` for `src`,       Start Jupyter from the project root
-  `data`, `models` or `reports`        or correct `PROJECT_ROOT` to the
-                                       real Q-INTEL folder.
+  FileNotFoundError for src,       Start Jupyter from the project root
+data, models or reports        or correct PROJECT_ROOT to the
+real QUICK-COMMERCE folder.
 
-  `train.csv` not found                Confirm the file is named
-                                       `train.csv` and is inside
-                                       `data/raw/`.
+  train.csv not found                Confirm the file is named
+train.csv and is inside
+data/raw/.
 
-  `NameError: raw_df is not defined`   Run the dataset-loading cell before
-                                       running cells that use `raw_df`;
-                                       restart and run all if the kernel
-                                       was reset.
+  NameError: raw_df is not defined   Run the dataset-loading cell before
+running cells that use raw_df;
+restart and run all if the kernel
+was reset.
 
-  `ModuleNotFoundError`                Activate `.venv`, install
-                                       `requirements.txt` in that
-                                       environment, and select the
-                                       matching Jupyter kernel.
+  ModuleNotFoundError                Activate .venv, install
+requirements.txt in that
+environment, and select the
+matching Jupyter kernel.
 
   Model file not found in Streamlit    Run the notebook through model
-                                       training and confirm the expected
-                                       model artifact exists.
+training and confirm the expected
+model artifact exists.
 
   Map has missing points or odd        Check GPS validity, coordinate
-  clusters                             ranges, cluster settings and the
-                                       geographic summary. Invalid GPS
-                                       records are excluded from spatial
-                                       analysis.
-
-  Different results from a previous    Check dataset version, package
-  run                                  versions, random seed, SLA setting,
-                                       feature list and notebook execution
-                                       order.
-  ------------------------------------------------------------------------
-
-## 9. Submission checklist
-
--   [ ] Final notebook runs from a fresh kernel without unresolved
-    errors.
--   [ ] `train.csv` is present in the documented location.
--   [ ] All model comparison tables use results from the final executed
-    notebook.
--   [ ] The SLA and threshold are consistent across notebook, report and
-    demo.
--   [ ] Model artifacts and report outputs are generated and included as
-    required.
--   [ ] Streamlit demo launches and a sample order is tested.
--   [ ] Assumptions and limitations are explained to judges.
--   [ ] No passwords, API keys, personal data or other secrets are
-    committed to Git.
-
-------------------------------------------------------------------------
-
-**Q-INTEL --- Quick-Commerce Delivery Intelligence**\
+clusters                             ranges, cluster settings and the
+geographic summary. Invalid GPS
+records are excluded from spatial
+analysis.
+Different results from a previous    Check dataset version, package
+run                                  versions, random seed, SLA setting,
+feature list and notebook execution
+order.
+9. Submission checklist
+- [ ] Final notebook runs from a fresh kernel without unresolved
+  errors.
+- [ ] train.csv is present in the documented location.
+- [ ] All model comparison tables use results from the final executed
+  notebook.
+- [ ] The SLA and threshold are consistent across notebook, report and
+  demo.
+- [ ] Model artifacts and report outputs are generated and included as
+  required.
+- [ ] Streamlit demo launches and a sample order is tested.
+- [ ] Assumptions and limitations are explained to judges.
+- [ ] No passwords, API keys, personal data or other secrets are
+  committed to Git.
+QUICK-COMMERCE --- Quick-Commerce Delivery Intelligence
 A historical-data machine-learning prototype for ETA prediction,
 late-risk analysis, demand-zone exploration and operational decision
 support.
